@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './TodoItem.css'
 
 function TodoItem({todo, markDone, deleteTodo, enterEditMode, saveEdits, cancelEdit}) {
 
@@ -6,7 +7,6 @@ function TodoItem({todo, markDone, deleteTodo, enterEditMode, saveEdits, cancelE
 
     const handleIsDone = () => {
         markDone(todo.id);
-        //todo.isDone = e.target.checked;
         console.log(todo.isDone);
     }
 
@@ -40,7 +40,7 @@ function TodoItem({todo, markDone, deleteTodo, enterEditMode, saveEdits, cancelE
             : 
             <>
             <input type='checkbox' checked={todo.isDone} onChange={handleIsDone}/>
-            {todo.text}
+            <span className="text">{todo.text}</span>
             <button onClick={handleEditMode}>Edit</button>
             </>}
 

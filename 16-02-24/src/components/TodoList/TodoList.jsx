@@ -2,6 +2,7 @@ import { useState } from "react";
 import TodoForm from "../TodoForm/TodoForm";
 import TodoItem from "../TodoItem/TodoItem";
 import TodoFooter from "../TodoFooter/TodoFooter";
+import './TodoList.css';
 
 const defaultTodoList = [
     {id: Math.random(),
@@ -79,9 +80,9 @@ function TodoList() {
         setTodos(todos.filter(todo => todo.isDone === false));
     }
 
-    return <>
+    return <div className='todo-container'>
     <TodoForm addTodo={addTodo}/>
-    <div>To be done</div>
+    <div className="title">To be done</div>
     {todos.filter(todo => todo.isDone === false).map(todo => 
     <TodoItem key={todo.id}
               todo={todo}
@@ -91,7 +92,7 @@ function TodoList() {
               saveEdits={saveEdits}
               cancelEdit={cancelEdit}
               />)}
-    <div>Done</div>  
+    <div className="title">Done</div>  
     {todos.filter(todo => todo.isDone === true).map(todo => 
     <TodoItem key={todo.id}
               todo={todo}
@@ -103,7 +104,7 @@ function TodoList() {
               />)}
     <TodoFooter todos={todos} deleteAll={deleteAll} deleteCompleted={deleteCompleted}/>          
               
-    </>
+    </div>
 }
 
 export default TodoList;

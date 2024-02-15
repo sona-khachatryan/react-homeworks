@@ -1,0 +1,12 @@
+.todo-item {
+    width: inherit;
+    height: auto;
+    max-height: 38px;
+    overflow: auto;
+    padding: 1%;
+    margin: 6px;
+    border: thin solid white;
+    border-radius: 4px;
+    background-color: rgba(255,255,255,0.5);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
