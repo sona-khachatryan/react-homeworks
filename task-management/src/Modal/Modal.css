@@ -1,0 +1,25 @@
+.modal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background-color: rgba(211,211,211,0.5);
+    width: 100vw;
+    height: 100vw;
+    top: 0;
+}
+
+.modal-content {
+    width: 400px;
+    height: 400px;
+    background-color: white;
+    border: thin solid lightgray;
+    border-radius: 8px;
+    padding: 16px;
+    position: relative;
+}
+
+.close-icon {
+    position: absolute;
+    right: 16px;
+}

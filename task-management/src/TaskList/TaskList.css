@@ -1,0 +1,21 @@
+.task-container {
+    width: 100vw;
+    height: 100vw;
+    display:flex;
+  } 
+
+.task-column {
+    min-width: 350px;
+    height: calc(100vh - 50px);
+    overflow: scroll;
+    position: relative;
+
+}
+  
+.column-title {
+    top: 0;
+    position:sticky;
+    padding: 10px 10px 15px;
+    margin: 0 2px;
+    background-color: white;
+  }

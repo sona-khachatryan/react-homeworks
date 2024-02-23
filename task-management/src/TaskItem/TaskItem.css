@@ -1,0 +1,22 @@
+.task-item {
+    border: thin solid gray;
+    border-radius: 4px;
+    height: auto;
+    min-height: 100px;
+    width: 300px;
+    padding: 10px 10px 15px;
+    margin: 10px;
+    position: relative;
+  }
+
+.delete-btn{
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.edit-btn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
