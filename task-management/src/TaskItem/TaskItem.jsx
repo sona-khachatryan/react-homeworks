@@ -1,30 +1,31 @@
 import SelectOptions from "../SelectOptions/SelectOptions";
 import './TaskItem.css'
 
-function TaskItem({task, deleteTask, changeStatus, changePriority, onEditClick}) {
+function TaskItem({task, deleteTask, changeSelect, onEditClick}) {
 
     const handleDelete = () => {
         deleteTask(task.id)
     }
 
-    const handleStatusChange = (e) => {
-        changeStatus(task.id, e.target.value)
+    const handleChangeStatus = (e) => {
+        changeSelect(task.id, 'status', e.target.value)
     }
 
     const handleChangePriority = (e) => {
-        changePriority(task.id, e.target.value)
+        changeSelect(task.id, 'priority', e.target.value)
     }
 
     const handleEditClick = () => {
-        onEditClick();
+        onEditClick(task.id);
     }
+    
 
     return <div className='task-item'>
         <div>{task.title}</div>
         <div>{task.description}</div>
         <div>{task.assignee}</div>
-        <SelectOptions label='status' selectedOption={task.status} handleStatusChange={handleStatusChange}/>
-        <SelectOptions label='priority' selectedOption={task.priority} handleChangePriority={handleChangePriority}/>
+        <SelectOptions label='status' selectedOption={task.status} handleChange={handleChangeStatus}/>
+        <SelectOptions label='priority' selectedOption={task.priority} handleChange={handleChangePriority}/>
         <button onClick={handleDelete} className='delete-btn'>X</button>
         <button onClick={handleEditClick} className='edit-btn'>Edit</button>
        

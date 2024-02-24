@@ -2,11 +2,17 @@ import {createPortal} from 'react-dom'
 import './Modal.css'
 
 function Modal({children, handleCloseModal}) {
+
+    const handleCloseOnOutsideClick = (e) => {
+        
+        console.log(e.target)
+    }
+
     return createPortal (
-        <div id='modal' className='modal-container'>
+        <div id='modal' onClick={handleCloseOnOutsideClick} className='modal-container'>
             <div className='modal-content'>
                 <button onClick={handleCloseModal} className='close-icon'>X</button>
-                {/* {children} */}
+                 {children}
             </div>
         </div>, document.body
     )
