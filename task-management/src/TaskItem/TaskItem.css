@@ -1,8 +1,8 @@
 .task-item {
-    border: thin solid gray;
+    border: hidden;
     border-radius: 4px;
-    height: auto;
-    min-height: 100px;
+    height: 220px;
+    min-height: fit-content;
     width: 300px;
     padding: 10px 10px 15px;
     margin: 10px;
@@ -10,13 +10,86 @@
   }
 
 .delete-btn{
+  appearance: none;
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 2px;
+  top: 5px;
+  padding: 4px 6px; 
+  margin: 4px;
+  font-size: 11px; 
+  border: thin solid white; 
+  border-radius: 4px; 
+  border-style: outset;
+  background-color: rgba(240, 240, 240); 
+  
 }
 
 .edit-btn {
+  appearance: none;
   position: absolute;
-  right: 0;
-  bottom: 0;
+  right: 25px;
+  top: 5px;
+  padding: 4px 6px; 
+  margin: 4px;
+  font-size: 11px; 
+  border: thin solid white; 
+  border-radius: 4px; 
+  border-style: outset;
+  background-color: rgba(240, 240, 240);  
+}
+
+
+
+.select-dropdown {
+  appearance: none;
+  padding: 4px; 
+  margin: 4px;
+  font-size: 14px; 
+  border: thin solid white; 
+  border-style: outset;
+  border-radius: 4px; 
+  background-color: rgba(255,255,255,0.9); 
+}
+
+.select-container {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  display: flex;
+}
+
+.select-label {
+  font-size: 13px;
+  padding: 4px; 
+}
+
+.task-title {
+  border: thin solid white; 
+  border-radius: 4px; 
+  background-color: rgba(255,255,255,0.3); 
+  width: fit-content;
+  max-width: calc(inherit - 20px);
+  padding: 6px;
+}
+
+.task-description {
+  border: thin solid white;
+  border-radius: 4px;
+  width: calc(inherit - 20px);
+  height: fit-content;
+  max-height: 25%;
+  overflow: auto;
+  padding: 10px 10px 15px;
+  margin: 10px 0;
+  background-color: rgba(255,255,255,0.3); 
+}
+
+.task-assignee {
+  border: thin solid white; 
+  border-radius: 4px; 
+  background-color: rgba(255,255,255,0.3); 
+  width: fit-content;
+  padding: 7px;
+  position: absolute;
+  right: 10px;
 }

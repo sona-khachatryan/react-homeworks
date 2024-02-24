@@ -2,5 +2,20 @@
   
 }
 
+.todo {
+    background-color: rgba(115, 143, 177, 0.5);
+}
+  
+.done {
+    background-color: rgba(90, 127, 107, 0.5);
+}
+  
+.in.progress {
+    background-color: rgba(179, 138, 125, 0.5);
+}
+  
+.backlog {
+    background-color: rgba(90, 42, 107, 0.4);
+}
 
 

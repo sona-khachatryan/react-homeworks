@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SelectOptions from "../SelectOptions/SelectOptions";
+import './EditMode.css'
 
 function EditMode({currentTask, changeSelect, onEditSave, onEditCancel}) {
 
@@ -27,17 +28,21 @@ function EditMode({currentTask, changeSelect, onEditSave, onEditCancel}) {
         onEditCancel()
     }
 
-    return <div>
-        <div>Title</div>
-        <input type='text' value={titleInputValue} onChange={(e) => setTitleInputValue(e.target.value)}/>
-        <div>Description</div>
-        <input type='text' value={descriptionInputValue} onChange={(e) => setDescriptionInputValue(e.target.value)}/>
-        <div>Assignee</div>
-        <input type='text' value={assigneeInputValue} onChange={(e) => setAssigneeInputValue(e.target.value)}/>
+    return <div className='edit-mode-container'>
+        <div className='edit-mode-labels'>Title</div>
+        <input className='edit-input' type='text' value={titleInputValue} onChange={(e) => setTitleInputValue(e.target.value)}/>
+        <div className='edit-mode-labels'>Description</div>
+        <input className='edit-input description-box' type='text' value={descriptionInputValue} onChange={(e) => setDescriptionInputValue(e.target.value)}/>
+        <div className='edit-mode-labels'>Assignee</div>
+        <input className='edit-input' type='text' value={assigneeInputValue} onChange={(e) => setAssigneeInputValue(e.target.value)}/>
+        <div className='edit-mode-select-container'>
         <SelectOptions label='status' selectedOption={currentStatusValue} handleChange={(handleChangeStatus)}/>
         <SelectOptions label='priority' selectedOption={currentPriorityValue} handleChange={handleChangePriority}/>  
-        <button onClick={handleEditSave}>Save</button>
-        <button onClick={handleEditCancel}>Cancel</button> 
+        </div>
+        <div className="edit-mode-btn-container">
+        <button className='edit-mode-btns' onClick={handleEditSave}>Save</button>
+        <button className='edit-mode-btns' onClick={handleEditCancel}>Cancel</button> 
+        </div>
     </div>
 }
 

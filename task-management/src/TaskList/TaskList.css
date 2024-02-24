@@ -5,17 +5,25 @@
   } 
 
 .task-column {
+  min-width: 350px;
+  height: calc(100vh - 50px);
+}
+  
+.column-title {
+    top: 5px;
+    width: fit-content;
+    align-content: center;
+    justify-content: center;
+    position:sticky;
+    padding: 8px 10px 10px;
+    margin:  4px 10px;
+    border: hidden;
+    border-radius: 4px;
+  }
+
+  .task-column-content {
     min-width: 350px;
     height: calc(100vh - 50px);
     overflow: scroll;
     position: relative;
-
-}
-  
-.column-title {
-    top: 0;
-    position:sticky;
-    padding: 10px 10px 15px;
-    margin: 0 2px;
-    background-color: white;
   }

@@ -92,7 +92,8 @@ function TaskList() {
     return (<>
     <div className='task-container'>
        {statuses.current.map((status) => <div className='task-column' key={status}>
-        <div className='column-title'>{status}</div>
+        <div className={`column-title ${status}`}>{status.replace(status[0], status[0].toUpperCase())}</div>
+        <div className='task-column-content'>
         {groupedTasks[status]?.map(task => <TaskItem key={task.id}
                                                     task={task}
                                                     deleteTask={deleteTask}
@@ -100,6 +101,7 @@ function TaskList() {
                                                     onEditClick={onEditClick}
                                                     
                                                     />)}
+       </div>                                             
        </div>
        )}
     </div>
