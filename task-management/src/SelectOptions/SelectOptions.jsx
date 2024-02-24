@@ -14,7 +14,7 @@ function SelectOptions({label, selectedOption, handleChange}) {
    return <>
     <label htmlFor={label}>{label}</label>
     <select name={label} id={label} value={selectedOption} onChange={handleChange}>
-    {getOptions(label).map(option => <option value={option}>{option}</option>)}
+    {getOptions(label).map(option => <option value={option} key={option}>{option}</option>)}
     </select>
     </>
 }

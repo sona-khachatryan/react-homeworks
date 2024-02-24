@@ -34,7 +34,7 @@ function reducer(currentTasks, action) {
 function TaskList() {
 
     const [tasks, dispatch] = useReducer(reducer, [])
-    const [ModalIsOpen, setModalIsOpen] = useState(false);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
     const [currentlyInEditMode, setcurrentlyInEditMode] =  useState({});
 
     const statuses = useRef([]);
@@ -55,12 +55,9 @@ function TaskList() {
 
 
     const groupedTasks = useMemo(() => tasks.reduce((grouped, task) => {
-        console.log('memo', task)
        if(grouped[task?.status]) {
-       // console.log('useMemo', task, task.status)
         grouped[task?.status].push(task);
        } else {
-       // console.log('useMemo', task, task.status)
         grouped[task?.status] = [task];
        }
         return grouped;
@@ -94,7 +91,7 @@ function TaskList() {
 
     return (<>
     <div className='task-container'>
-       {statuses.current.map((status) => <div className='task-column'>
+       {statuses.current.map((status) => <div className='task-column' key={status}>
         <div className='column-title'>{status}</div>
         {groupedTasks[status]?.map(task => <TaskItem key={task.id}
                                                     task={task}
@@ -106,7 +103,7 @@ function TaskList() {
        </div>
        )}
     </div>
-    {ModalIsOpen && <Modal handleCloseModal={handleCloseModal}>
+    {modalIsOpen && <Modal handleCloseModal={handleCloseModal}>
         <EditMode currentTask={currentlyInEditMode}
                   changeSelect={changeSelect}
                   onEditSave={onEditSave}
