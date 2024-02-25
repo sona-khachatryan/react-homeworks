@@ -1,19 +1,13 @@
-import {createPortal} from 'react-dom'
-import { useRef } from 'react';
+import {createPortal} from 'react-dom';
 import './Modal.css'
+import useOutsideClick from './useOutsideClick';
 
 function Modal({children, handleCloseModal}) {
 
-    const modalRef = useRef();
-    
-    const handleOutsideClick = (e) => {
-        if(modalRef.current && !modalRef.current.contains(e.target)) {
-            handleCloseModal();
-        }
-    };
-        
+    const [modalRef, onOutsideClick] = useOutsideClick({ handleCloseModal })
+
     return createPortal (
-        <div id='modal' className='modal-container' onClick={handleOutsideClick}>
+        <div id='modal' className='modal-container' onClick={onOutsideClick}>
             <div className='modal-content' ref={modalRef}>
                 <button onClick={handleCloseModal} className='close-icon'>X</button>
                  {children}
