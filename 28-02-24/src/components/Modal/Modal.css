@@ -1,0 +1,30 @@
+.modal-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(164, 138, 125, 0.5);
+}
+
+.modal-content {
+    height: fit-content;
+    min-height: 300px;
+    width: 400px;
+    background-color: white;
+    border: thin solid rgba(126, 105, 95, 0.695);
+    border-radius: 6px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-style: outset;
+    border-radius: 3px;
+    border: thin solid rgba(173, 152, 143, 0.695);
+    background-color: rgba(219, 204, 197, 0.5);
+}
+

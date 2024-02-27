@@ -1,0 +1,20 @@
+.quote-container{
+    height: inherit;
+    width: inherit;
+}
+
+.quote {
+    background-color: white;
+    border: thin solid rgba(126, 105, 95, 0.695);
+    border-radius: 6px;
+    width: 80%;
+    height: fit-content;
+    padding: 10px;
+    margin: 50px 20px 18px;
+}
+
+.quote-info {
+    text-align: right;
+    right: 20px;
+    margin: 15px 15px 30px;
+}
