@@ -6,15 +6,20 @@ import './TicTacToe.css';
 function TicTacToe() {
 
     const [player, setPlayer] = useState('o');
-    const [status, setStatus] = useState('');
+    const [statusMessage, setStatusMessage] = useState('');
+    const [status, setStatus] = useState('playing');
     const [board, setBoard] = useState(['','','','','','','','','']);
-    const [isWon, setIsWon] = useState(false);
 
     useEffect(() => {
         checkWinning();
 
-        if(!isWon) {
+        if(status === 'playing') {
             setPlayer( player === 'x' ? 'o' : 'x');
+        }
+
+        if(status === 'playing' && !board.includes('')) {
+            setStatusMessage(STATUSES.DRAW);
+            setStatus('draw');
         }
 
     }, [board]);
@@ -46,22 +51,20 @@ function TicTacToe() {
 
             if(cell1 === cell2 && cell1 === cell3) {
 
-                setIsWon(true);
-                setStatus(player === 'x' ? STATUSES.X_WON : STATUSES.O_WON);
+                setStatus('win');
+                setStatusMessage(player === 'x' ? STATUSES.X_WON : STATUSES.O_WON);
             }
         })
     }
 
     const play = (e) => {
        
-        if(!isWon && !e.target.innerText) {
-
-            setStatus('');
+        if(status === 'playing' && !e.target.innerText) {
+            setStatusMessage('');
             updateBoard(e);
-
-        } else if (!isWon && e.target.innerText) {
-            setStatus(STATUSES.ILLEGAL_MOVE);
-            setTimeout(() => setStatus(''), 1500);
+        } else if ( status === 'playing' && e.target.innerText) {
+            setStatusMessage(STATUSES.ILLEGAL_MOVE);
+            setTimeout(() => setStatusMessage(''), 1500);
         }
           
     }
@@ -69,8 +72,8 @@ function TicTacToe() {
     const startNewGame = () => {
         setBoard(['','','','','','','','','']);
         setPlayer('o');
-        setStatus('');
-        setIsWon(false);
+        setStatusMessage('');
+        setStatus('playing');
     }
 
     
@@ -85,7 +88,7 @@ function TicTacToe() {
                                                 {cell}
                                         </div>)}
     </div>
-    <StatusBar status={status} player={player}/>
+    <StatusBar status={statusMessage} player={player}/>
     <button className='new-game-btn' onClick={startNewGame}>New Game</button>
     </div>)
 }

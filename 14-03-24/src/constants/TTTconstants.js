@@ -1,7 +1,8 @@
 const STATUSES = {
     X_WON: 'Congrats X! You won the game!',
     O_WON: 'Congrats O! You won the game!',
-    ILLEGAL_MOVE: 'ILLEGAL MOVE! Choose an empty cell!'
+    ILLEGAL_MOVE: 'ILLEGAL MOVE! Choose an empty cell!',
+    DRAW: "It's a draw! Start a new game!",
 }
 
 const WINNING_CASES = [
