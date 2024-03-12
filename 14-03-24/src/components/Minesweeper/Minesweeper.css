@@ -1,0 +1,56 @@
+.mines-game-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(210, 210, 210);
+    padding: 16px;
+    border: 4px outset rgb(190, 190, 190);
+    height: 400px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.header {
+    background-color: rgb(220,220,220);
+    padding: 10px 12px;
+    border: 4px inset  rgb(230, 230, 230); 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.minefield {
+    width: fit-content;
+    height: fit-content;
+    margin-top: 16px;
+    background-color: rgb(220,220,220);
+    border: 4px inset  rgb(230, 230, 230); 
+    display: grid;
+    grid-template-rows: repeat(9, 1fr);
+    grid-template-columns: repeat(9, 1fr);
+}
+
+.number-display {
+    width: 80px;
+    height: 48px;
+    background-color: black;
+    color: orange;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+}
+
+.minesweeper-cell {
+ width: 30px;
+ height: 30px;
+ background-color: rgb(210, 210, 210);
+ border: 3px outset rgb(190, 190, 190); 
+ cursor: pointer;  
+}
+
+.open {
+    border: 2px solid gray;
+}

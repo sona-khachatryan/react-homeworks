@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { STATUSES, WINNING_CASES } from "../../constants/TTTconstants";
-import StatusBar from "../StatusBar/StatusBar";
+import StatusBar from "../StatusBarTicTacToe/StatusBar";
 import './TicTacToe.css';
 
 function TicTacToe() {
