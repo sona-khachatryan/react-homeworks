@@ -1,12 +1,7 @@
-const NUMBER_OF_CELLS = {
-    EASY: {
-        rows: 9,
-        columns: 9,
-    },
-}
+
 
 const CELL_VALUES = {
-    BOMB: 'BOMB',
+    MINE: 'MINE',
     EMPTY: 'EMPTY',
     '1': '1',
     '2': '2',
@@ -18,15 +13,19 @@ const CELL_VALUES = {
     '8': '8'
 }
 
-const SELL_STATUS = {
+const CELL_STATUS = {
     OPENED: 'OPENED',
     CLOSED: 'CLOSED',
     FLAGGED: 'FLAGGED'
 }
 
 const GAME_MODES = {
-    EASY: 'EASY',
-
+    EASY: {
+        mode: 'EASY',
+        rows: 9,
+        columns: 9,
+        mines: 10
+    },
 }
 
-export { NUMBER_OF_CELLS, CELL_VALUES, SELL_STATUS, GAME_MODES}
+export { CELL_VALUES, CELL_STATUS, GAME_MODES}

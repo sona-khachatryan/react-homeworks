@@ -9,7 +9,7 @@ function MineSweeper() {
         <Settings/>
         <div className='mines-game-container'>
         <Header/>
-        <Gamefield mode={GAME_MODES.EASY}/>
+        <Gamefield mode={GAME_MODES.EASY.mode}/>
         </div>
     </div>
 }

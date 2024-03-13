@@ -1,18 +1,37 @@
 
-import { NUMBER_OF_CELLS, CELL_VALUES, SELL_STATUS } from "../constants/MineConstants";
+import { GAME_MODES, CELL_VALUES, CELL_STATUS } from "../constants/MineConstants";
 
-export const generateCells = (mode) => {
+const generateCells = (mode) => {
+
+    //generateEmptyCells
     const field = [];
 
-    for(let row = 0; row < NUMBER_OF_CELLS[mode].rows; row++) {
+    for(let row = 0; row < GAME_MODES[mode].rows; row++) {
         field.push([]);
-        for(let col = 0; col < NUMBER_OF_CELLS[mode].columns; col++) {
+        for(let col = 0; col < GAME_MODES[mode].columns; col++) {
             field[row].push({
                 value: CELL_VALUES.EMPTY,
-                state: SELL_STATUS.OPENED,
+                status: CELL_STATUS.OPENED,
             })
         }
     }
 
+    //generateMines
+    let placedMines = 0;
+    while(placedMines < GAME_MODES[mode].mines) {
+        const randomRow = Math.floor(Math.random()*GAME_MODES[mode].rows);
+        const randomCol = Math.floor(Math.random()*GAME_MODES[mode].columns);
+
+        const currentCell = field[randomRow][randomCol];
+        if(currentCell.value !== CELL_VALUES.MINE) {
+            field[randomRow][randomCol] = {...field[randomRow][randomCol], value: CELL_VALUES.MINE};
+            placedMines++;
+        };
+    }
+    
+
     return field;
 }
+
+
+export { generateCells, }

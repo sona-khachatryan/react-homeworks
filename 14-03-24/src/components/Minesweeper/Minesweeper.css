@@ -49,8 +49,11 @@
  background-color: rgb(210, 210, 210);
  border: 3px outset rgb(190, 190, 190); 
  cursor: pointer;  
+ align-items: center;
+ text-align: center;
+ justify-content: center;
 }
 
 .open {
-    border: 2px solid gray;
+    border: 1px solid gray;
 }
