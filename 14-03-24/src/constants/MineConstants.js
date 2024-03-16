@@ -28,4 +28,17 @@ const GAME_MODES = {
     },
 }
 
-export { CELL_VALUES, CELL_STATUS, GAME_MODES}
+const EMOJIS = {
+    PLAYING: '🙂',
+    LOST: '😵',
+    WON: '😎' 
+}
+
+const GAME_STATUS = {
+    PLAYING: 'PLAYING',
+    LOST: 'LOST',
+    WON: 'WON',
+    PAUSED: 'PAUSED'
+}
+
+export { CELL_VALUES, CELL_STATUS, GAME_MODES, EMOJIS, GAME_STATUS}

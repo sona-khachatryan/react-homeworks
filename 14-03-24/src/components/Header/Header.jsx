@@ -1,9 +1,11 @@
+import Emoji from "../Emoji/Emoji";
 import NumberDisplay from "../NumberDisplays/NumberDisplays";
 
-function Header() {
+function Header({status, mineCount, time, handleReset}) {
     return <div className='header'>
-        <NumberDisplay value={0}/>
-        <NumberDisplay value={23}/>
+        <NumberDisplay value={mineCount}/>
+        <Emoji status={status} handleReset={handleReset}/>
+        <NumberDisplay value={time}/>
     </div>
 }
 
