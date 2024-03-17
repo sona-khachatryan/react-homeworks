@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import Gamefield from "../Gamefield/Gamefield";
 import Header from "../Header/Header";
 import Settings from "../Settings/Settings";
-import { CELL_STATUS, GAME_MODES, GAME_STATUS } from "../../constants/MineConstants";
-import { generateCells } from "../../utils/MineUtils";
+import { CELL_STATUS, CELL_VALUES, GAME_MODES, GAME_STATUS } from "../../constants/MineConstants";
+import { generateCells, openAdjacentCells } from "../../utils/MineUtils";
 import './Minesweeper.css'
 
 function MineSweeper() {
@@ -36,14 +36,22 @@ function MineSweeper() {
         const currentCells = [...cells];
         const currentCell = cells[rowIndex][cellIndex];
 
-        if(currentCell.status === CELL_STATUS.CLOSED) {
+       
+        if(currentCell.status === CELL_STATUS.FLAGGED || currentCell.status === CELL_STATUS.OPENED) {
+            return;
+        }
+
+        if(currentCell.value === CELL_VALUES.MINE) {
+            //todo
+        } else if(currentCell.value === CELL_VALUES.EMPTY) {
+            openAdjacentCells(mode, currentCells, rowIndex, cellIndex)
+        } else {
             currentCells[rowIndex][cellIndex].status = CELL_STATUS.OPENED;
             setCells(currentCells);
         }
 
         console.log(rowIndex, cellIndex)
-        //contionue onClick
-        //cells[rowIndex][cellIndex]
+       
     }
 
     const handleRightClick = (e, rowIndex, cellIndex) => {

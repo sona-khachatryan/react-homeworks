@@ -1,6 +1,70 @@
 
 import { GAME_MODES, CELL_VALUES, CELL_STATUS } from "../constants/MineConstants";
 
+const getAdjacentCells = (mode, field, row, col) => {
+
+    const topLeftCell = row > 0 && col > 0 ? 
+    {
+        cell: field[row-1][col-1],
+        row: row-1,
+        col: col-1
+    } : null;
+    const topCell = row > 0 ? 
+    {
+        cell: field[row-1][col],
+        row: row-1,
+        col: col
+    } : null;
+    const topRightCell = row > 0 && col < GAME_MODES[mode].columns - 1 ? 
+    {
+        cell: field[row-1][col+1],
+        row: row-1,
+        col: col+1
+    } : null;
+    const leftCell = col > 0 ? 
+    {
+        cell: field[row][col-1],
+        row: row,
+        col: col-1
+    } : null;
+    const rightCell = col < GAME_MODES[mode].columns - 1 ? 
+    {
+        cell: field[row][col + 1],
+        row: row,
+        col: col+1
+    } : null;
+    const bottomLeftCell = row < GAME_MODES[mode].rows - 1 && col > 0 ? 
+    {
+        cell: field[row+1][col-1],
+        row: row+1,
+        col: col-1
+    } : null;
+    const bottomCell = row < GAME_MODES[mode].rows - 1 ? 
+    {
+        cell: field[row+1][col],
+        row: row+1,
+        col: col
+    } : null;
+    const bottomRightCell = row < GAME_MODES[mode].rows - 1 && col < GAME_MODES[mode].columns - 1 ? 
+    {
+        cell: field[row+1][col+1],
+        row: row+1,
+        col: col+1
+    } 
+     : null;
+
+    return [
+        topLeftCell,
+        topCell,
+        topRightCell,
+        leftCell,
+        rightCell,
+        bottomLeftCell,
+        bottomCell,
+        bottomRightCell,
+    ]
+}
+
 const generateCells = (mode) => {
 
     //generateEmptyCells
@@ -40,28 +104,29 @@ const generateCells = (mode) => {
             }
 
             let numberOfMines = 0;
-            const topLeftCell = row > 0 && col > 0 ? field[row-1][col-1] : null;
-            const topCell = row > 0 ? field[row-1][col] : null;
-            const topRightCell = row > 0 && col < GAME_MODES[mode].columns - 1 ? field[row-1][col+1] : null;
-            const leftCell = col > 0 ? field[row][col-1] : null;
-            const rightCell = col < GAME_MODES[mode].columns - 1 ? field[row][col + 1] : null;
-            const bottomLeftCell = row < GAME_MODES[mode].rows - 1 && col > 0 ? field[row+1][col-1] : null;
-            const bottomCell = row < GAME_MODES[mode].rows - 1 ? field[row+1][col] : null;
-            const bottomRightCell = row < GAME_MODES[mode].rows - 1 && col < GAME_MODES[mode].columns - 1 ? field[row+1][col+1] : null;
+            // const topLeftCell = row > 0 && col > 0 ? field[row-1][col-1] : null;
+            // const topCell = row > 0 ? field[row-1][col] : null;
+            // const topRightCell = row > 0 && col < GAME_MODES[mode].columns - 1 ? field[row-1][col+1] : null;
+            // const leftCell = col > 0 ? field[row][col-1] : null;
+            // const rightCell = col < GAME_MODES[mode].columns - 1 ? field[row][col + 1] : null;
+            // const bottomLeftCell = row < GAME_MODES[mode].rows - 1 && col > 0 ? field[row+1][col-1] : null;
+            // const bottomCell = row < GAME_MODES[mode].rows - 1 ? field[row+1][col] : null;
+            // const bottomRightCell = row < GAME_MODES[mode].rows - 1 && col < GAME_MODES[mode].columns - 1 ? field[row+1][col+1] : null;
 
-            const adjacentCells = [
-                topLeftCell,
-                topCell,
-                topRightCell,
-                leftCell,
-                rightCell,
-                bottomLeftCell,
-                bottomCell,
-                bottomRightCell,
-            ]
+            // const adjacentCells = [
+            //     topLeftCell,
+            //     topCell,
+            //     topRightCell,
+            //     leftCell,
+            //     rightCell,
+            //     bottomLeftCell,
+            //     bottomCell,
+            //     bottomRightCell,
+            // ]
 
-            adjacentCells.forEach(cell => {
-                if(cell?.value === CELL_VALUES.MINE) {
+            const adjacentCells = getAdjacentCells(mode, field, row, col);
+            adjacentCells.forEach(adjCell => {
+                if(adjCell?.cell.value === CELL_VALUES.MINE) {
                     numberOfMines++;
                 }
             })
@@ -78,5 +143,24 @@ const generateCells = (mode) => {
     return field;
 }
 
+const openAdjacentCells = (mode, currentCells, rowIndex, cellIndex) => {
+    const currentCell =  currentCells[rowIndex][cellIndex];
+    currentCell.status = CELL_STATUS.OPENED;
 
-export { generateCells, }
+    const adjacentCells = getAdjacentCells(mode, currentCells,  rowIndex, cellIndex);
+
+    adjacentCells.forEach(adjCell => {
+        if(adjCell?.cell.status === CELL_STATUS.CLOSED && adjCell.cell.value !== CELL_VALUES.MINE) {
+            if(adjCell.cell.value !== CELL_VALUES.EMPTY) {
+                adjCell.cell.status = CELL_STATUS.OPENED;
+            } else {
+                currentCells = openAdjacentCells(mode, currentCells, adjCell.row, adjCell.col);
+            }
+        }
+    })
+
+    return currentCells;
+}
+
+
+export { generateCells, openAdjacentCells}
