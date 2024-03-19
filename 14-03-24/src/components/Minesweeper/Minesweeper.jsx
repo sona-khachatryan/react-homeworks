@@ -28,15 +28,23 @@ function MineSweeper() {
     }, [gameStatus])
 
     const onCellClick = (rowIndex, cellIndex) => {
+        let currentCells = [...cells];
 
         if(!gameStatus) {
+            let isMine = currentCells[rowIndex][cellIndex].value === CELL_VALUES.MINE;
+            while(isMine) {
+                currentCells = generateCells(mode);
+                if(currentCells[rowIndex][cellIndex].value !== CELL_VALUES.MINE) {
+                    isMine = false;
+                    break;
+                }
+            }
             setGameStatus(GAME_STATUS.PLAYING);
         } else if (gameStatus !== GAME_STATUS.PLAYING) {
             return;
         }
 
-        let currentCells = [...cells];
-        const currentCell = cells[rowIndex][cellIndex];
+        const currentCell = currentCells[rowIndex][cellIndex];
 
        
         if(currentCell.status === CELL_STATUS.FLAGGED || currentCell.status === CELL_STATUS.OPENED) {
