@@ -23,6 +23,7 @@ function Cell({cell, onCellClick, handleRightClick}) {
     return <div className={`minesweeper-cell 
                           ${cell.status === CELL_STATUS.OPENED ? 'open' : ''}
                           value-${cell.value}
+                          ${cell?.exploded ? 'exploded' : ''}
                           `}
                 onClick={onCellClick}
                 onContextMenu={handleRightClick}>
