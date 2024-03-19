@@ -1,8 +1,8 @@
 import Cell from "../Cell/Cell";
 
-function Gamefield({cells, onCellClick, handleRightClick}) {
+function Gamefield({mode, cells, onCellClick, handleRightClick}) {
    
-    return <div className='minefield'>
+    return <div className={`minefield ${mode}`}>
         {cells.map((row, rowIndex) => 
             row.map((cell, cellIndex) => <Cell key={`${rowIndex}-${cellIndex}`} 
                                                cell={cell}

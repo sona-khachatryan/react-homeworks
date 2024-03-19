@@ -12,6 +12,7 @@
 }
 
 .header {
+    position: relative;
     background-color: rgb(220,220,220);
     padding: 10px 12px;
     border: 4px inset  rgb(230, 230, 230); 
@@ -27,12 +28,25 @@
     background-color: rgb(220,220,220);
     border: 4px inset  rgb(230, 230, 230); 
     display: grid;
+}
+
+.EASY {
     grid-template-rows:repeat(9, 1fr);
     grid-template-columns: repeat(9, 1fr);
 }
 
+.INTERMEDIATE {
+    grid-template-rows:repeat(16, 1fr);
+    grid-template-columns: repeat(16, 1fr);
+}
+
+.HARD {
+    grid-template-rows:repeat(16, 1fr);
+    grid-template-columns: repeat(30, 1fr);
+}
+
 .number-display {
-    width: 80px;
+    width: 70px;
     height: 48px;
     background-color: black;
     color: orange;
@@ -44,8 +58,8 @@
 }
 
 .minesweeper-cell {
- width: 30px;
- height: 30px;
+ width: 20px;
+ height: 20px;
  background-color: rgb(210, 210, 210);
  border: 3px outset  rgb(210, 210, 210);
  cursor: pointer;  
@@ -109,4 +123,15 @@
 
 .exploded {
     background-color: red;
+}
+
+.select {
+    position: absolute;
+    left: 0;
+    top: -10%;
+    display: flex;
+    padding: 3px;
+    background-color: rgb(210, 210, 210);
+    border: 3px inset rgb(190, 190, 190);
+    font-weight: bold;
 }

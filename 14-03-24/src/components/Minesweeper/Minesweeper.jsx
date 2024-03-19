@@ -27,6 +27,17 @@ function MineSweeper() {
 
     }, [gameStatus])
 
+    useEffect(() => {
+        setGameStatus('');
+        setTime(0);
+        setCells(generateCells(mode))
+        setMineCount(GAME_MODES[mode].mines)
+    }, [mode])
+
+    const handleModeChange = (e) => {
+        setMode(e.target.value);
+    }
+
     const onCellClick = (rowIndex, cellIndex) => {
         let currentCells = [...cells];
 
@@ -124,10 +135,10 @@ function MineSweeper() {
     };
 
     return <div>
-        <Settings/>
         <div className='mines-game-container'>
+        <Settings handleModeChange={handleModeChange}/>
         <Header status={gameStatus} mineCount={mineCount} time={time} handleReset={handleReset}/>
-        <Gamefield cells={cells} onCellClick={onCellClick} handleRightClick={handleRightClick}/>
+        <Gamefield mode={mode} cells={cells} onCellClick={onCellClick} handleRightClick={handleRightClick}/>
         </div>
     </div>
 }

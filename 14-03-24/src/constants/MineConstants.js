@@ -26,6 +26,18 @@ const GAME_MODES = {
         columns: 9,
         mines: 10
     },
+    INTERMEDIATE: {
+        mode: 'INTERMEDIATE',
+        rows: 16,
+        columns: 16,
+        mines: 40
+    },
+    HARD: {
+        mode: 'HARD',
+        rows: 16,
+        columns: 30,
+        mines: 99
+    }
 }
 
 const EMOJIS = {
