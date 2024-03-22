@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { GAME_MODES } from "../../constants/MineConstants";
 
 function Settings({handleModeChange}) {
